@@ -1,8 +1,10 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu-20.04
 
  RUN \
+ sudo apt-get update \
+  && sudo apt-get install -y wget \
  # bring in latest cmake
- sudo wget -qO /etc/apt/trusted.gpg.d/kitware-key.asc https://apt.kitware.com/keys/kitware-archive-latest.asc \ 
+ && sudo wget -qO /etc/apt/trusted.gpg.d/kitware-key.asc https://apt.kitware.com/keys/kitware-archive-latest.asc \ 
  && echo "deb https://apt.kitware.com/ubuntu/ focal main" | sudo tee /etc/apt/sources.list.d/kitware.list \
  && sudo apt-get update \
  # need that to get add-apt-repository
